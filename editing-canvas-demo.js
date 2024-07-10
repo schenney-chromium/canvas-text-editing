@@ -58,6 +58,10 @@ class AppState {
     }
   }
 
+  onStringChanged() {
+    this.text_metrics = this.context.measureText(this.string);
+  }
+
   caretLocationFromPosition() {
     if (this.caret_position == 0) {
       return 0;
@@ -92,6 +96,7 @@ class AppState {
                      this.string.substring(end, this.string.length);
     this.caret_position = start;
     this.string = new_string;
+    this.onStringChnaged();
     this.have_caret = true;
     this.redraw();
   }
@@ -117,6 +122,7 @@ class AppState {
                    + character_string
                    + this.string.substring(this.caret_position, this.string.length);
     this.string = new_string;
+    this.onStringChnaged();
     this.caret_position += character_string.length;
     this.redraw();    
   }
