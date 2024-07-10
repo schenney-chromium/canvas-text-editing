@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="editing-canvas-demo.js"></script>
+    <style>
+      canvas {
+        background-color: white;
+        border: 1px solid black;
+        outline: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Canvas Text Editing Demo</h1>
+    <canvas id="canvas" tabindex="0" width="800px" height="100px"></canvas>
+    <div style="width: 800px;">
+      <p>This project demonstrates the new HTML Canvas TextMetrics APIs
+         under development in Chromium-based browsers, with the intention
+         of adding them to the
+         <a url="https://html.spec.whatwg.org/multipage/canvas.html#textmetrics">
+         HTML Canvas specification.</a></p>
+      <p>The new APIs target the editing of text in canvas.</p>
+      <ul>
+        <li><span style="font-family: sans-serif; font-style: italic;">caretPositionFromPoint</span>
+          gives the locatiom in a string corresponding to a pixel length along
+          the string. Use it to identify where the caret is in the string,
+          and what the bounds of a selection range are.
+        <li><span style="font-family: sans-serif; font-style: italic;">getSelectionRects</span>
+          returns the rectangles that a browser would use to highlight
+          a range of text. Use it to draw the selection highlight.
+        <li><span style="font-family: sans-serif; font-style: italic;">getActualBoundingBox</span>
+          returns the bounding box for a sub-range of text within a string.
+          Use it if you need to know whether a point lies within a substring,
+          rather than the entire string.
+      </ul>
+      <h3>Usage:</h3>
+      <ul>
+        <li>Clicking within the text places a cursor. Typing here will insert
+          the text into the string. Click outside the text to clear the cursor.
+        <li>Dragging will select the range of text.
+        <li>Ctrl-C copies the selected text into a buffer.
+        <li>Ctrl-X cuts the selected text and puts it in the buffer.
+        <li>Ctrl-V inserts the buffer at the caret location.
+        <li>The Backspace key deletes the character before the caret, or the
+          selection.
+      </ul>
+      <h3>Limitations</h3>
+      <ul>
+        <li>The behavior with RTL text or, even more, mixed directions is
+          not well defined.
+        <li>Emoji are not supported, nor other glyhs specified with mutliple
+            characters.
+        <li>There is no line breaking.
+        <li>There is no undo/redo.
+      </ul>
+    </div>
+  </body>
+</html>
