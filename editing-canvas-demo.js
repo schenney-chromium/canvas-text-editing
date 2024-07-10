@@ -208,7 +208,6 @@ function handleKeyUp(event) {
       g_app_state.deleteSelected();
     }
   } else if (!event.metaKey && !event.altkey) {
-    console.log(event.key);
     if (event.key.length == 1) {
       // Process a text insert. The length == 1 check is a hack to get
       // the set of letters, numbers and punctuation, but not emoji nor
@@ -216,7 +215,7 @@ function handleKeyUp(event) {
       g_app_state.insertCharacters(event.key);
     } else if (event.key == "Backspace" && g_app_state.caret_position > 0) {
       if (g_app_state.have_selection) {
-        g_app_state.deleteSelection();
+        g_app_state.deleteSelected();
       } else if (g_app_state.have_caret) {
         g_app_state.deleteRange(g_app_state.caret_position - 1,
                                 g_app_state.caret_position);
